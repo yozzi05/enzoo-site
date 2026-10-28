@@ -44,13 +44,15 @@ export const site = {
   },
 
   /**
-   * Ссылки на маршрут построены поиском по подтверждённому адресу.
-   * Ссылки на карточки организации на картах в источнике не найдены (CONTENT_GAPS.md).
+   * Маршрут строится по подтверждённому адресу. Карточки организации найдены
+   * в сервисах по названию и адресу (проспект Имама Шамиля, 35), сверены 28.10.2026.
    */
   maps: {
+    yandexOrg: 'https://yandex.ru/maps/org/enzoo/1271103904/',
+    yandexReviews: 'https://yandex.ru/maps/org/enzoo/1271103904/reviews/',
+    twoGisOrg: 'https://2gis.ru/makhachkala/firm/70000001031449339',
+    twoGisReviews: 'https://2gis.ru/makhachkala/firm/70000001031449339/tab/reviews',
     yandexRoute: `https://yandex.ru/maps/?mode=routes&rtext=~${routeQuery}`,
-    yandexSearch: `https://yandex.ru/maps/?text=${encodeURIComponent(`EnZoo, ${address.city}, ${address.street}`)}`,
-    twoGisSearch: `https://2gis.ru/makhachkala/search/${routeQuery}`,
     embed: `https://yandex.ru/map-widget/v1/?text=${routeQuery}&z=17`,
   },
 

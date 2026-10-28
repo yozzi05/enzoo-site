@@ -49,7 +49,7 @@ export function RouteLinks() {
       <a href={site.maps.yandexRoute} target="_blank" rel="noopener noreferrer" className="btn btn--outline btn--sm" data-track="route_click" data-place="yandex">
         <Icon name="route" size={18} /> Маршрут в Яндекс Картах<span className="visually-hidden"> (откроется в новой вкладке)</span>
       </a>
-      <a href={site.maps.twoGisSearch} target="_blank" rel="noopener noreferrer" className="btn btn--outline btn--sm" data-track="route_click" data-place="2gis">
+      <a href={site.maps.twoGisOrg} target="_blank" rel="noopener noreferrer" className="btn btn--outline btn--sm" data-track="route_click" data-place="2gis">
         <Icon name="map" size={18} /> Открыть в 2ГИС<span className="visually-hidden"> (откроется в новой вкладке)</span>
       </a>
     </div>
