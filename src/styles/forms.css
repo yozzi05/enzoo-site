@@ -1,0 +1,54 @@
+.field { display: grid; gap: 6px; }
+.field label, .field legend { font-weight: 700; font-size: 0.9375rem; color: var(--text); }
+.field__opt { font-weight: 500; color: var(--text-muted); }
+.field__hint { font-size: 0.8125rem; color: var(--text-muted); }
+.input, .select, .textarea {
+  width: 100%; min-height: 52px; padding: 12px 14px; border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm);
+  background: #fff; font-size: 1rem; line-height: 1.4; transition: border-color 0.15s var(--ease);
+}
+.textarea { min-height: 112px; resize: vertical; }
+.select {
+  appearance: none; padding-right: 44px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23002f55' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+}
+.input:hover, .select:hover, .textarea:hover { border-color: var(--navy-600); }
+.input:focus-visible, .select:focus-visible, .textarea:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; border-color: var(--navy); }
+.input[aria-invalid='true'], .select[aria-invalid='true'], .textarea[aria-invalid='true'] { border-color: var(--danger); background: var(--danger-bg); }
+.field__error { display: flex; gap: 6px; align-items: flex-start; font-size: 0.875rem; font-weight: 600; color: var(--danger); }
+.field__error svg { flex-shrink: 0; margin-top: 1px; }
+.field__counter { font-size: 0.8125rem; color: var(--text-muted); text-align: right; }
+
+.check { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; }
+.check input { width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--navy); }
+.check label { font-weight: 500; font-size: 0.9375rem; }
+.check a { color: var(--navy); font-weight: 600; }
+
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+.form { display: grid; gap: 20px; }
+.form__row { display: grid; gap: 20px; }
+@media (min-width: 640px) { .form__row { grid-template-columns: 1fr 1fr; } }
+.form__footer { display: grid; gap: 12px; }
+.form__submit { min-width: 240px; justify-self: start; }
+@media (max-width: 479px) { .form__submit { width: 100%; } }
+.form__note { display: flex; gap: 8px; align-items: center; font-size: 0.9375rem; font-weight: 600; color: var(--navy-600); }
+.spinner { width: 18px; height: 18px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.form-card { padding: 24px 20px; border-radius: var(--radius-lg); background: #fff; border: 1px solid var(--line); }
+@media (min-width: 640px) { .form-card { padding: 36px 40px; } }
+
+.status { display: flex; gap: 14px; padding: 20px; border-radius: var(--radius); }
+.status svg { flex-shrink: 0; margin-top: 2px; }
+.status h2, .status h3 { font-size: 1.125rem; margin-bottom: 4px; }
+.status--error { background: var(--danger-bg); color: var(--text); border-left: 4px solid var(--danger); }
+.status--error svg { color: var(--danger); }
+.status--success { background: var(--success-bg); border-left: 4px solid var(--green); }
+.status--success svg { color: var(--success); }
+.status a { font-weight: 700; color: var(--navy); }
+
+.appt-layout { display: grid; gap: 40px; }
+@media (min-width: 1024px) { .appt-layout { grid-template-columns: minmax(0, 1fr) 360px; gap: 64px; align-items: start; } }
+.field__label-lg { display: block; font-weight: 800; font-size: 1.0625rem; color: var(--navy); margin-bottom: 10px; }
+.status a, .notice a { white-space: nowrap; }
