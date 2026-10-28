@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { PageIntro } from '@/components/ui/PageIntro'
-import { ReviewsSources } from '@/components/sections/ReviewsSources'
 import { site } from '@/config/site'
 import { Icon } from '@/components/Icon'
 
@@ -19,11 +18,6 @@ export default function ReviewsPage() {
         lead="Мы не пересказываем отзывы и не публикуем их без указания источника. Мнения владельцев питомцев можно прочитать на независимых площадках."
       />
       <section className="section">
-        <div className="container">
-          <ReviewsSources titleId="rev-sources" compact={false} />
-        </div>
-      </section>
-      <section className="section section--surface">
         <div className="container split">
           <div>
             <h2>Хотите оставить отзыв?</h2>
