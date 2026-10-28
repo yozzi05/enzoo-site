@@ -16,7 +16,7 @@ export default function NotFound() {
           404
         </p>
         <h1>Такой страницы нет</h1>
-        <p className="lead">Возможно, адрес изменился или в нём опечатка. Если нужна помощь питомцу — позвоните, клиника работает {site.hours.label.toLowerCase()}.</p>
+        <p className="lead">Возможно, адрес изменился или в нём опечатка. Если нужна помощь питомцу - позвоните, клиника работает {site.hours.label.toLowerCase()}.</p>
         <div className="actions">
           <a href={site.phone.href} className="btn btn--primary" data-track="call_click" data-place="404">
             <Icon name="phone" size={18} /> {site.phone.display}

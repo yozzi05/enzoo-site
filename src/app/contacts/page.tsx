@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function ContactsPage() {
   return (
     <>
-      <PageIntro crumbs={[{ href: '/contacts', label: 'Контакты' }]} title="Контакты и маршрут" lead={`${site.address.city}, ${site.address.short} — ${site.address.landmark}.`} />
+      <PageIntro crumbs={[{ href: '/contacts', label: 'Контакты' }]} title="Контакты и маршрут" lead={`${site.address.city}, ${site.address.short} - ${site.address.landmark}.`} />
       <section className="section section--tight">
         <div className="container contact-section__grid">
           <div>
@@ -29,7 +29,7 @@ export default function ContactsPage() {
               <div>
                 <h3>Как добраться</h3>
                 <p>
-                  Клиника находится на первом этаже дома № 35 по проспекту Имама Шамиля, {site.address.landmark}. Если не можете найти вход, позвоните — администратор подскажет.
+                  Клиника находится на первом этаже дома № 35 по проспекту Имама Шамиля, {site.address.landmark}. Если не можете найти вход, позвоните - администратор подскажет.
                 </p>
               </div>
             </div>

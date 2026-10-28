@@ -24,7 +24,7 @@ export async function generateMetadata(props: PageProps<'/services/[slug]'>): Pr
     title: s.h1,
     description: s.metaDescription,
     alternates: { canonical: `/services/${s.slug}` },
-    openGraph: { title: `${s.h1} — EnZoo, Махачкала`, description: s.metaDescription, url: `/services/${s.slug}` },
+    openGraph: { title: `${s.h1} - EnZoo, Махачкала`, description: s.metaDescription, url: `/services/${s.slug}` },
   }
 }
 
@@ -74,11 +74,11 @@ export default async function ServicePage(props: PageProps<'/services/[slug]'>) 
                     <a href={site.phone.href} data-track="call_click" data-place="service-order" data-service={s.slug}>
                       {site.phone.display}
                     </a>{' '}
-                    или <Link href={`/appointment?service=${s.slug}`}>оставьте заявку</Link> — администратор подтвердит время.
+                    или <Link href={`/appointment?service=${s.slug}`}>оставьте заявку</Link> - администратор подтвердит время.
                   </span>
                 </li>
                 <li>
-                  <span>Если ситуация срочная, не ждите ответа на заявку — звоните сразу.</span>
+                  <span>Если ситуация срочная, не ждите ответа на заявку - звоните сразу.</span>
                 </li>
                 <li>
                   <span>Возьмите ветеринарный паспорт, результаты прошлых анализов и исследований, список препаратов. Правила подготовки к конкретной процедуре уточните у администратора.</span>
@@ -130,7 +130,7 @@ export default async function ServicePage(props: PageProps<'/services/[slug]'>) 
           <aside className="service-aside" aria-label="Запись">
             <div className="aside-card aside-card--navy">
               <h2>Записаться: {s.name.toLowerCase()}</h2>
-              <p>Заявка — не бронь: администратор перезвонит и подтвердит время приёма.</p>
+              <p>Заявка - не бронь: администратор перезвонит и подтвердит время приёма.</p>
               <Link href={`/appointment?service=${s.slug}`} className="btn btn--primary">
                 Оставить заявку
               </Link>

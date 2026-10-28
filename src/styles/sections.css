@@ -1,6 +1,6 @@
 main:focus { outline: none; }
 
-/* ——— Hero ——— */
+/* --- Hero --- */
 .hero { background: var(--navy); color: #fff; overflow: hidden; }
 .hero :focus-visible { outline-color: var(--lime); }
 .hero__grid { display: grid; gap: 32px; padding-block: 32px 40px; }
@@ -37,7 +37,7 @@ main:focus { outline: none; }
   .hero__media img { aspect-ratio: 16 / 10; }
 }
 
-/* ——— Быстрый выбор ——— */
+/* --- Быстрый выбор --- */
 .quick { border-bottom: 1px solid var(--line); background: #fff; }
 .quick__list { list-style: none; display: grid; grid-template-columns: 1fr; }
 .quick__list a {
@@ -61,7 +61,7 @@ main:focus { outline: none; }
   .quick__list a:hover .quick__arrow { translate: 3px 0; }
 }
 
-/* ——— Направления ——— */
+/* --- Направления --- */
 .featured { list-style: none; display: grid; gap: 16px; grid-template-columns: 1fr; }
 @media (min-width: 768px) { .featured { grid-template-columns: repeat(3, 1fr); } }
 .featured__item {
@@ -79,7 +79,7 @@ main:focus { outline: none; }
 .featured__link::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
 .featured__link:hover { text-decoration: underline; }
 .featured__lines { list-style: none; display: grid; gap: 6px; color: var(--text-muted); }
-.featured__lines li::before { content: '—'; margin-right: 8px; color: var(--green); }
+.featured__lines li::before { content: '-'; margin-right: 8px; color: var(--green); }
 .featured__arrow { position: absolute; left: 24px; bottom: 24px; color: var(--green); }
 
 .service-rows { list-style: none; display: grid; grid-template-columns: 1fr; margin-top: 32px; border-top: 1px solid var(--line); }
@@ -94,7 +94,7 @@ main:focus { outline: none; }
 .service-rows__name { font-weight: 700; color: var(--navy); font-size: 1.0625rem; }
 .service-rows__text { color: var(--text-muted); font-size: 0.9375rem; }
 
-/* ——— О клинике (тизер) ——— */
+/* --- О клинике (тизер) --- */
 .about-teaser { display: grid; gap: 40px; }
 .about-teaser h2 { font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.375rem); max-width: 24ch; }
 .about-teaser__text { margin: 20px 0 24px; color: var(--text-muted); max-width: 60ch; }
@@ -105,7 +105,7 @@ main:focus { outline: none; }
 .facts dt { font-weight: 800; color: var(--navy); }
 .facts dd { margin: 0; color: var(--text-muted); }
 
-/* ——— Возможности ——— */
+/* --- Возможности --- */
 .caps { list-style: none; display: grid; grid-template-columns: 1fr; border-top: 1px solid rgba(255, 255, 255, 0.18); }
 @media (min-width: 768px) { .caps { grid-template-columns: 1fr 1fr; column-gap: 48px; } }
 @media (min-width: 1200px) { .caps { grid-template-columns: repeat(3, 1fr); } }
@@ -116,7 +116,7 @@ main:focus { outline: none; }
 .caps__link:hover { background: rgba(255, 255, 255, 0.08); }
 .caps__note { max-width: 42ch; color: var(--text-on-dark-muted); font-size: 0.9375rem; }
 
-/* ——— Груминг (тизер) ——— */
+/* --- Груминг (тизер) --- */
 .grooming-teaser { display: grid; gap: 40px; align-items: center; }
 @media (min-width: 1024px) { .grooming-teaser { grid-template-columns: 1fr 1fr; gap: 72px; } }
 .grooming-teaser__media { display: grid; grid-template-columns: 3fr 2fr; gap: 12px; align-items: end; }
@@ -127,7 +127,7 @@ main:focus { outline: none; }
 .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
 .tags li { padding: 6px 12px; border: 1px solid var(--line-strong); border-radius: 999px; font-size: 0.875rem; font-weight: 600; color: var(--navy); }
 
-/* ——— Шаги ——— */
+/* --- Шаги --- */
 .steps { list-style: none; display: grid; gap: 0; counter-reset: step; }
 @media (min-width: 900px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
 .steps li { counter-increment: step; position: relative; padding: 20px 0 24px 60px; border-top: 2px solid var(--line-strong); }
@@ -141,7 +141,7 @@ main:focus { outline: none; }
 .steps p { color: var(--text-muted); }
 .steps a { color: var(--navy); font-weight: 700; }
 
-/* ——— Цена и отзывы ——— */
+/* --- Цена и отзывы --- */
 .price-notice, .reviews-sources { display: grid; gap: 24px; }
 .price-notice { padding: 32px 24px; border-radius: var(--radius-lg); background: var(--surface-2); border-left: 4px solid var(--lime); }
 .reviews-sources { padding-block: 8px; }
@@ -154,19 +154,19 @@ main:focus { outline: none; }
 }
 .reviews-sources h2, .price-notice h2 { font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); }
 
-/* ——— Две колонки ——— */
+/* --- Две колонки --- */
 .split { display: grid; gap: 32px; }
 .split__lead { margin: 12px 0 16px; }
 @media (min-width: 1024px) { .split { grid-template-columns: 0.8fr 1.2fr; gap: 80px; align-items: start; } .split > :first-child { position: sticky; top: calc(var(--header-h) + 64px); } }
 
-/* ——— Контакты ——— */
+/* --- Контакты --- */
 .contact-section { background: #fff; border-top: 1px solid var(--line); }
 .contact-section__grid { display: grid; gap: 40px; }
 @media (min-width: 1024px) { .contact-section__grid { grid-template-columns: 1fr 1fr; gap: 64px; align-items: stretch; } }
 .contact-section h2 { margin-bottom: 16px; }
 .contact-section__cta { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; margin-top: 28px; }
 
-/* ——— Каталог ——— */
+/* --- Каталог --- */
 .catalog-search { position: relative; max-width: 640px; }
 .catalog-search svg { position: absolute; left: 16px; top: 50%; translate: 0 -50%; color: var(--text-muted); pointer-events: none; }
 .catalog-search input { padding-left: 48px !important; }
@@ -186,7 +186,7 @@ main:focus { outline: none; }
 .empty-state h2, .empty-state h3 { font-size: 1.25rem; }
 .empty-state p { color: var(--text-muted); max-width: 52ch; }
 
-/* ——— Страница услуги ——— */
+/* --- Страница услуги --- */
 .service-layout { display: grid; gap: 48px; }
 @media (min-width: 1024px) { .service-layout { grid-template-columns: minmax(0, 1fr) 340px; gap: 72px; align-items: start; } }
 .service-aside { display: grid; gap: 16px; }
@@ -223,7 +223,7 @@ main:focus { outline: none; }
 .related a svg { color: var(--green); flex-shrink: 0; }
 .review-note { margin-top: 48px; font-size: 0.8125rem; color: var(--text-muted); }
 
-/* ——— Цены ——— */
+/* --- Цены --- */
 .price-filters { display: grid; gap: 12px; grid-template-columns: 1fr; align-items: end; padding: 20px; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--line); }
 @media (min-width: 768px) { .price-filters { grid-template-columns: 2fr 1fr 1fr auto; } }
 .price-table { list-style: none; margin-top: 24px; border-top: 2px solid var(--navy); }
@@ -252,7 +252,7 @@ main:focus { outline: none; }
 .factors h3 { font-size: 1.0625rem; margin-bottom: 6px; }
 .factors p { font-size: 0.9375rem; color: var(--text-muted); }
 
-/* ——— О клинике, груминг ——— */
+/* --- О клинике, груминг --- */
 .media-split { display: grid; gap: 40px; align-items: center; }
 @media (min-width: 1024px) { .media-split { grid-template-columns: 1fr 1fr; gap: 72px; } .media-split--reverse > :first-child { order: 2; } }
 .media-split img { width: 100%; border-radius: var(--radius-lg); object-fit: cover; }
@@ -272,13 +272,13 @@ main:focus { outline: none; }
 .breeds { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin-top: 16px; }
 .breeds li { padding: 6px 12px; background: var(--surface-2); border-radius: 999px; font-size: 0.875rem; font-weight: 600; }
 
-/* ——— Документы ——— */
+/* --- Документы --- */
 .legal { max-width: 76ch; }
 .legal h2 { font-size: 1.375rem; margin: 40px 0 12px; }
 .legal p, .legal li { color: var(--text); }
 .legal ul { padding-left: 1.2em; display: grid; gap: 6px; margin-top: 8px; }
 
-/* ——— 404 ——— */
+/* --- 404 --- */
 .not-found { padding-block: 80px; }
 .not-found__code { font-size: clamp(4rem, 3rem + 6vw, 8rem); font-weight: 800; line-height: 1; color: var(--lime); letter-spacing: -0.04em; }
 .not-found h1 { margin: 16px 0; }

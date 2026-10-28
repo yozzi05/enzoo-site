@@ -9,7 +9,7 @@ import { Icon } from '@/components/Icon'
 import { isActive } from './NavLinks'
 
 /**
- * Мобильное меню на нативном <dialog>: модальность, ловушка фокуса и Escape —
+ * Мобильное меню на нативном <dialog>: модальность, ловушка фокуса и Escape -
  * средствами браузера; фокус возвращается на кнопку открытия.
  */
 export function MobileMenu() {

@@ -14,7 +14,7 @@ export function ContactDetails() {
           <a href={site.phone.href} className="contact-list__phone" data-track="call_click" data-place="contacts">
             {site.phone.display}
           </a>
-          <span className="muted">Звонок — самый быстрый способ связаться с клиникой.</span>
+          <span className="muted">Звонок - самый быстрый способ связаться с клиникой.</span>
         </dd>
       </div>
       <div>

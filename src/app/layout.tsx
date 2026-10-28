@@ -14,8 +14,8 @@ import '@/styles/forms.css'
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Ветеринарная клиника EnZoo в Махачкале — круглосуточно',
-    template: '%s — ветклиника EnZoo, Махачкала',
+    default: 'Ветеринарная клиника EnZoo в Махачкале - круглосуточно',
+    template: '%s - ветклиника EnZoo, Махачкала',
   },
   description: `Ветеринарная клиника EnZoo в Махачкале: терапия, диагностика, хирургия, вакцинация, стационар и груминг. Круглосуточно. ${site.address.street}, ${site.address.landmark}. Телефон ${site.phone.display}.`,
   applicationName: site.legalTitle,

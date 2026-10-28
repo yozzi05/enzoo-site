@@ -1,4 +1,4 @@
-/* ——— Токены (см. DESIGN.md) ——— */
+/* --- Токены (см. DESIGN.md) --- */
 :root {
   --navy: #002f55;
   --navy-700: #0b3d66;
@@ -61,7 +61,7 @@
   :root { --gutter: 32px; --header-h: 76px; --fs-body: 1.0625rem; --fs-lead: 1.25rem; }
 }
 
-/* ——— База ——— */
+/* --- База --- */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + 16px); }
 html:focus-within { scroll-behavior: smooth; }

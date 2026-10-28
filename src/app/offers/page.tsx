@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const date = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })
 
-/** Страница существует только при наличии подтверждённых предложений; иначе — 404. */
+/** Страница существует только при наличии подтверждённых предложений; иначе - 404. */
 export default function OffersPage() {
   if (offers.length === 0) notFound()
   return (

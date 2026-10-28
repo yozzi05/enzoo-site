@@ -8,7 +8,7 @@ export function Steps() {
         <h3>Свяжитесь с клиникой</h3>
         <p>
           Позвоните по номеру <a href={site.phone.href} data-track="call_click" data-place="steps">{site.phone.display}</a> или{' '}
-          <Link href="/appointment">оставьте заявку</Link>. Если ситуация срочная — сразу звоните.
+          <Link href="/appointment">оставьте заявку</Link>. Если ситуация срочная - сразу звоните.
         </p>
       </li>
       <li>

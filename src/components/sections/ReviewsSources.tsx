@@ -8,7 +8,7 @@ export function ReviewsSources({ titleId, compact = true }: { titleId: string; c
     <div className="reviews-sources">
       <div>
         <p className="eyebrow eyebrow--dark">Отзывы</p>
-        <h2 id={titleId}>Отзывы — на независимых площадках</h2>
+        <h2 id={titleId}>Отзывы - на независимых площадках</h2>
         <p className="reviews-sources__text">Мы не публикуем отзывы без указания источника. Почитать мнения владельцев и оставить свой отзыв можно в картографических сервисах.</p>
       </div>
       <div className="reviews-sources__links">

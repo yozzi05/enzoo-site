@@ -7,7 +7,7 @@ import { isAppointmentEnabled } from '@/lib/server/delivery'
 
 export const metadata: Metadata = {
   title: 'Заявка на приём',
-  description: 'Оставьте заявку на приём в ветеринарной клинике EnZoo в Махачкале — администратор перезвонит и подтвердит время. Или позвоните: +7 928 222-00-88.',
+  description: 'Оставьте заявку на приём в ветеринарной клинике EnZoo в Махачкале - администратор перезвонит и подтвердит время. Или позвоните: +7 928 222-00-88.',
   alternates: { canonical: '/appointment' },
 }
 
@@ -32,7 +32,7 @@ export default function AppointmentPage() {
                 <Icon name="phone" size={24} />
                 <div>
                   <h2>Запишитесь по телефону</h2>
-                  <p>Онлайн-заявки временно не принимаются. Позвоните администратору — он подберёт время и ответит на вопросы.</p>
+                  <p>Онлайн-заявки временно не принимаются. Позвоните администратору - он подберёт время и ответит на вопросы.</p>
                   <p style={{ marginTop: 16 }}>
                     <a href={site.phone.href} className="btn btn--primary" data-track="call_click" data-place="appointment-disabled">
                       <Icon name="phone" size={18} /> {site.phone.display}
@@ -45,7 +45,7 @@ export default function AppointmentPage() {
           <aside className="service-aside" aria-label="Связаться по телефону">
             <div className="aside-card aside-card--navy">
               <h2>Нужна помощь сейчас?</h2>
-              <p>Не заполняйте форму — позвоните. Клиника работает {site.hours.label.toLowerCase()}.</p>
+              <p>Не заполняйте форму - позвоните. Клиника работает {site.hours.label.toLowerCase()}.</p>
               <a href={site.phone.href} className="aside-card__phone" data-track="call_click" data-place="appointment-aside">
                 {site.phone.display}
               </a>

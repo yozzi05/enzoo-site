@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic'
 type ErrorCode = 'disabled' | 'bad_request' | 'too_large' | 'rate_limited' | 'validation' | 'delivery_failed'
 
 function fail(code: ErrorCode, status: number, extra: Record<string, unknown> = {}, headers?: HeadersInit) {
-  // В лог попадает только код ошибки — без имени, телефона и комментария.
+  // В лог попадает только код ошибки - без имени, телефона и комментария.
   if (code === 'delivery_failed') console.warn('[appointment] delivery failed', extra.reason ?? '')
   return NextResponse.json({ ok: false, code, ...extra }, { status, headers })
 }

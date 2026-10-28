@@ -1,4 +1,4 @@
-/* ——— Кнопки ——— */
+/* --- Кнопки --- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   min-height: 52px; padding: 0 24px; border-radius: var(--radius-sm); border: 2px solid transparent;
@@ -25,13 +25,13 @@
 .icon-button { display: inline-grid; place-items: center; width: 44px; height: 44px; border: 0; background: transparent; border-radius: var(--radius-sm); color: var(--navy); }
 .icon-button:hover { background: var(--surface-2); }
 
-/* ——— Логотип ——— */
+/* --- Логотип --- */
 .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
 .logo__mark { width: auto; height: 44px; }
 .logo__word { width: auto; height: 24px; }
 @media (min-width: 1024px) { .logo__mark { height: 52px; } .logo__word { height: 28px; } }
 
-/* ——— Шапка ——— */
+/* --- Шапка --- */
 .site-header { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid var(--line); }
 .utility { background: var(--navy); color: var(--text-on-dark-muted); font-size: 0.875rem; display: none; }
 @media (min-width: 1024px) { .utility { display: block; } }
@@ -73,7 +73,7 @@
 }
 @media (max-width: 359px) { .logo__word { display: none; } }
 
-/* ——— Мобильное меню ——— */
+/* --- Мобильное меню --- */
 .mobile-menu { padding: 0; border: 0; margin: 0 0 0 auto; height: 100%; max-height: 100dvh; width: min(420px, 100%); max-width: 100%; background: #fff; color: var(--text); }
 .mobile-menu::backdrop { background: rgba(0, 25, 46, 0.55); }
 .mobile-menu[open] { animation: menu-in 0.2s var(--ease); }
@@ -90,7 +90,7 @@
 .mobile-menu__contacts { display: grid; gap: 10px; margin-top: auto; padding-top: 24px; }
 .mobile-menu__meta { color: var(--text-muted); font-size: 0.9375rem; margin-top: 6px; }
 
-/* ——— Нижняя панель на телефоне ——— */
+/* --- Нижняя панель на телефоне --- */
 .action-bar {
   position: fixed; inset: auto 0 0 0; z-index: 30; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
   padding: 8px var(--gutter) calc(8px + env(safe-area-inset-bottom)); background: #fff; border-top: 1px solid var(--line);
@@ -107,7 +107,7 @@ body:has(.action-bar) { padding-bottom: calc(var(--action-bar-h) + env(safe-area
   body:has(.action-bar) { padding-bottom: 0; }
 }
 
-/* ——— Подвал ——— */
+/* --- Подвал --- */
 .site-footer { background: var(--surface); border-top: 1px solid var(--line); padding-top: var(--space-8); font-size: 0.9375rem; }
 .footer__grid { display: grid; gap: 32px; grid-template-columns: 1fr; }
 @media (min-width: 640px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
@@ -123,7 +123,7 @@ body:has(.action-bar) { padding-bottom: calc(var(--action-bar-h) + env(safe-area
 .footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; border-top: 1px solid var(--line); margin-top: var(--space-7); padding-block: 20px; color: var(--text-muted); font-size: 0.875rem; }
 .footer__bottom ul { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; }
 
-/* ——— Крошки и шапка страниц ——— */
+/* --- Крошки и шапка страниц --- */
 .crumbs ol { display: flex; flex-wrap: wrap; gap: 4px 0; list-style: none; font-size: 0.875rem; }
 .crumbs li { display: inline-flex; align-items: center; color: var(--text-on-dark-muted); }
 .crumbs li + li::before { content: '/'; margin: 0 10px; opacity: 0.6; }
@@ -137,7 +137,7 @@ body:has(.action-bar) { padding-bottom: calc(var(--action-bar-h) + env(safe-area
 .page-intro .actions { margin-top: var(--space-5); }
 @media (min-width: 1024px) { .page-intro { padding-block: 28px var(--space-8); } }
 
-/* ——— Секции ——— */
+/* --- Секции --- */
 .section { padding-block: var(--space-8); }
 @media (min-width: 1024px) { .section { padding-block: var(--space-9); } }
 .section--tight { padding-block: var(--space-7); }
@@ -148,7 +148,7 @@ body:has(.action-bar) { padding-bottom: calc(var(--action-bar-h) + env(safe-area
 .section__head h2 { max-width: 22ch; }
 .section__head .lead { margin-top: var(--space-3); }
 
-/* ——— FAQ ——— */
+/* --- FAQ --- */
 .faq { border-top: 1px solid var(--line); }
 .faq__item { border-bottom: 1px solid var(--line); }
 .faq__item summary {
@@ -160,7 +160,7 @@ body:has(.action-bar) { padding-bottom: calc(var(--action-bar-h) + env(safe-area
 .faq__item[open] .faq__chevron { transform: rotate(180deg); }
 .faq__item p { padding: 0 40px 20px 0; color: var(--text-muted); max-width: 70ch; }
 
-/* ——— Контакты и карта ——— */
+/* --- Контакты и карта --- */
 .contact-list { display: grid; gap: 0; margin: 0; }
 .contact-list > div { display: grid; grid-template-columns: 1fr; gap: 4px; padding: 18px 0; border-bottom: 1px solid var(--line); }
 @media (min-width: 640px) { .contact-list > div { grid-template-columns: 180px 1fr; gap: 16px; } }
@@ -179,7 +179,7 @@ body:has(.action-bar) { padding-bottom: calc(var(--action-bar-h) + env(safe-area
 .map__placeholder p span { font-weight: 500; color: var(--text-muted); }
 .map__placeholder .map__note { font-size: 0.8125rem; font-weight: 500; color: var(--text-muted); }
 
-/* ——— Уведомления ——— */
+/* --- Уведомления --- */
 .notice { display: flex; gap: 14px; padding: 18px 20px; border-radius: var(--radius); background: var(--surface-2); border-left: 4px solid var(--navy-600); }
 .notice svg { flex-shrink: 0; margin-top: 2px; color: var(--navy-600); }
 .notice--warn { background: #fff7ed; border-left-color: #c2620a; }
@@ -189,6 +189,6 @@ body:has(.action-bar) { padding-bottom: calc(var(--action-bar-h) + env(safe-area
 .notice h3 { font-size: 1.0625rem; margin-bottom: 4px; }
 .notice p { color: var(--text); }
 
-/* Таблица-список вида «термин — значение» */
+/* Таблица-список вида «термин - значение» */
 .rows { list-style: none; border-top: 1px solid var(--line); }
 .rows > li { border-bottom: 1px solid var(--line); }

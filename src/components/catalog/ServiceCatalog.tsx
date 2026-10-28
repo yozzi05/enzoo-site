@@ -93,7 +93,7 @@ export function ServiceCatalog({ entries, groups }: { entries: CatalogEntry[]; g
       {results.length === 0 ? (
         <div className="empty-state">
           <h2>Ничего не нашлось</h2>
-          <p>Попробуйте другое слово или позвоните администратору — он подскажет, к какому врачу обратиться.</p>
+          <p>Попробуйте другое слово или позвоните администратору - он подскажет, к какому врачу обратиться.</p>
           <div className="actions">
             <button type="button" className="btn btn--outline btn--sm" onClick={() => setQuery('')}>
               Сбросить поиск

@@ -30,7 +30,7 @@ export default function ReviewsPage() {
           <div className="prose">
             <p>Найдите клинику на картах по адресу {site.address.city}, {site.address.street} и оставьте отзыв в карточке организации. Это помогает другим владельцам сделать выбор.</p>
             <p>
-              Если что-то пошло не так, расскажите об этом по телефону <a href={site.phone.href} data-track="call_click" data-place="reviews">{site.phone.display}</a> — мы постараемся
+              Если что-то пошло не так, расскажите об этом по телефону <a href={site.phone.href} data-track="call_click" data-place="reviews">{site.phone.display}</a> - мы постараемся
               разобраться.
             </p>
           </div>

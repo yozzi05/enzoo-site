@@ -33,8 +33,8 @@ const featured = [
 const restSlugs = ['castration', 'vaccination', 'hospital', 'dentistry', 'ophthalmology', 'oncology', 'orthopedics', 'obstetrics', 'rodents', 'documents']
 
 const capabilities = [
-  { title: 'Лабораторные исследования', text: 'Общий и биохимический анализ крови выполняют на месте. Расширенные исследования — ПЦР, посевы, гистологию — в партнёрской лаборатории.', href: '/services/laboratory' },
-  { title: 'УЗИ', text: 'Брюшная полость, отдельные органы, малый таз, контроль беременности. По результатам — заключение.', href: '/services/ultrasound' },
+  { title: 'Лабораторные исследования', text: 'Общий и биохимический анализ крови выполняют на месте. Расширенные исследования - ПЦР, посевы, гистологию - в партнёрской лаборатории.', href: '/services/laboratory' },
+  { title: 'УЗИ', text: 'Брюшная полость, отдельные органы, малый таз, контроль беременности. По результатам - заключение.', href: '/services/ultrasound' },
   { title: 'Рентгенография', text: 'Снимки в одной и двух проекциях, исследование на дисплазию, контрастная рентгенография.', href: '/services/xray' },
   { title: 'Хирургия и анестезия', text: 'Операции разной сложности с анестезиологическим сопровождением и контролем жизненно важных показателей.', href: '/services/surgery' },
   { title: 'Стационар', text: 'Наблюдение и лечение на 12 часов или сутки. Инфекционного стационара в клинике нет.', href: '/services/hospital' },
@@ -51,7 +51,7 @@ export default function HomePage() {
           <div className="hero__text">
             <p className="eyebrow">{site.tagline}</p>
             <h1 id="hero-title">
-              Ветеринарная помощь в&nbsp;Махачкале —<span className="hero__accent"> круглосуточно</span>
+              Ветеринарная помощь в&nbsp;Махачкале&nbsp;-<span className="hero__accent"> круглосуточно</span>
             </h1>
             <p className="hero__lead">Приём, диагностика и лечение питомцев. Поможем выбрать направление и согласовать визит в клинику.</p>
             <CallActions place="hero" variant="dark" />
@@ -67,7 +67,7 @@ export default function HomePage() {
               </a>
             </div>
             <p className="hero__urgent">
-              Если помощь нужна сейчас — позвоните:{' '}
+              Если помощь нужна сейчас - позвоните:{' '}
               <a href={site.phone.href} data-track="call_click" data-place="hero-urgent">
                 {site.phone.display}
               </a>
@@ -204,7 +204,7 @@ export default function HomePage() {
           </div>
           <div className="grooming-teaser__text">
             <p className="eyebrow eyebrow--dark">Груминг-студия</p>
-            <h2 id="grooming-title">Стрижка и уход — там же, где лечат</h2>
+            <h2 id="grooming-title">Стрижка и уход - там же, где лечат</h2>
             <p className="lead">{grooming.lead}</p>
             <ul className="tags">
               {grooming.services.map((s) => (
@@ -256,7 +256,7 @@ export default function HomePage() {
           <div>
             <p className="eyebrow eyebrow--dark">Вопросы</p>
             <h2 id="faq-title">Коротко о записи и визите</h2>
-            <p className="lead split__lead">Не нашли ответ — позвоните, администратор подскажет.</p>
+            <p className="lead split__lead">Не нашли ответ - позвоните, администратор подскажет.</p>
             <a href={site.phone.href} className="link-arrow" data-track="call_click" data-place="faq">
               <Icon name="phone" size={18} /> {site.phone.display}
             </a>

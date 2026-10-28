@@ -46,7 +46,7 @@ export function AppointmentForm() {
   const successRef = useRef<HTMLDivElement>(null)
   const [bounds] = useState(() => dateBounds())
 
-  // Услуга из ссылки вида /appointment?service=ultrasound — предзаполняется и остаётся редактируемой.
+  // Услуга из ссылки вида /appointment?service=ultrasound - предзаполняется и остаётся редактируемой.
   useEffect(() => {
     const raw = new URLSearchParams(window.location.search).get('service') ?? ''
     if (appointmentServiceOptions.some((o) => o.value === raw)) {
@@ -134,7 +134,7 @@ export function AppointmentForm() {
             {requestId && <> Номер заявки: {requestId}.</>}
           </p>
           <p style={{ marginTop: 12 }}>
-            Если помощь нужна срочно, не ждите звонка — позвоните сами:{' '}
+            Если помощь нужна срочно, не ждите звонка - позвоните сами:{' '}
             <a href={site.phone.href} data-track="call_click" data-place="form-success">
               {site.phone.display}
             </a>
@@ -194,7 +194,7 @@ export function AppointmentForm() {
       <div className="form__row">
         <div className="field">
           <label htmlFor="f-species">
-            Питомец <span className="field__opt">— необязательно</span>
+            Питомец <span className="field__opt">- необязательно</span>
           </label>
           <select id="f-species" name="species" className="select" value={values.species} onChange={(e) => set('species', e.target.value)} {...aria('species')}>
             <option value="">Не указано</option>
@@ -208,7 +208,7 @@ export function AppointmentForm() {
         </div>
         <div className="field">
           <label htmlFor="f-service">
-            Услуга <span className="field__opt">— необязательно</span>
+            Услуга <span className="field__opt">- необязательно</span>
           </label>
           <select id="f-service" name="service" className="select" value={values.service} onChange={(e) => set('service', e.target.value)} {...aria('service')}>
             <option value="">Не знаю, нужна консультация</option>
@@ -224,7 +224,7 @@ export function AppointmentForm() {
 
       <div className="field" style={{ maxWidth: 320 }}>
         <label htmlFor="f-date">
-          Желательная дата <span className="field__opt">— необязательно</span>
+          Желательная дата <span className="field__opt">- необязательно</span>
         </label>
         <input id="f-date" name="date" type="date" className="input" min={bounds.min} max={bounds.max} value={values.date} onChange={(e) => set('date', e.target.value)} {...aria('date', 'date-hint')} />
         <p className="field__hint" id="date-hint">
@@ -235,7 +235,7 @@ export function AppointmentForm() {
 
       <div className="field">
         <label htmlFor="f-comment">
-          Коротко о ситуации <span className="field__opt">— необязательно</span>
+          Коротко о ситуации <span className="field__opt">- необязательно</span>
         </label>
         <textarea id="f-comment" name="comment" className="textarea" maxLength={LIMITS.comment} value={values.comment} onChange={(e) => set('comment', e.target.value)} {...aria('comment', 'comment-count')} />
         <p className="field__counter" id="comment-count">
@@ -268,7 +268,7 @@ export function AppointmentForm() {
             <div>
               <h2>{serverError}</h2>
               <p>
-                Введённые данные сохранены — попробуйте отправить ещё раз или позвоните:{' '}
+                Введённые данные сохранены - попробуйте отправить ещё раз или позвоните:{' '}
                 <a href={site.phone.href} data-track="call_click" data-place="form-error">
                   {site.phone.display}
                 </a>

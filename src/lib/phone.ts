@@ -5,7 +5,7 @@ export function phoneDigits(raw: string): string {
   const s = raw.trim()
   // Уже отформатированное значение: код страны +7 не считаем частью номера.
   let d = (s.startsWith('+7') ? s.slice(2) : s).replace(/\D/g, '')
-  // 8XXXXXXXXXX или 7XXXXXXXXXX — 11 цифр с кодом страны/выхода.
+  // 8XXXXXXXXXX или 7XXXXXXXXXX - 11 цифр с кодом страны/выхода.
   if (d.length >= 11 && (d.startsWith('7') || d.startsWith('8'))) d = d.slice(1)
   return d.slice(0, 10)
 }
