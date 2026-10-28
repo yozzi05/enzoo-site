@@ -4,6 +4,7 @@
  * Счётчики с enzoovet.ru («200+ отзывов», «500+ питомцев», «85%») не используются: не подтверждены.
  */
 import type { Faq } from './services'
+import { withBase } from '@/config/site'
 
 export type Photo = {
   src: string
@@ -17,7 +18,7 @@ export type Photo = {
 
 export const photos = {
   catOnCounter: {
-    src: '/images/cat-on-counter.webp',
+    src: withBase('/images/cat-on-counter.webp'),
     width: 960,
     height: 1280,
     alt: 'Пушистая рыжая кошка сидит на светлой стойке',
@@ -25,7 +26,7 @@ export const photos = {
     sourceUrl: 'https://static.tildacdn.com/tild3366-3539-4063-b735-623432316336/IMG_9731.JPG',
   },
   catAfterGrooming: {
-    src: '/images/cat-after-grooming.webp',
+    src: withBase('/images/cat-after-grooming.webp'),
     width: 960,
     height: 1280,
     alt: 'Кошка после гигиенической стрижки лежит на столе',
@@ -33,7 +34,7 @@ export const photos = {
     sourceUrl: 'https://static.tildacdn.com/tild3763-3933-4166-a636-363762616437/IMG_9735.JPG',
   },
   groomingPoodle: {
-    src: '/images/grooming-poodle.webp',
+    src: withBase('/images/grooming-poodle.webp'),
     width: 736,
     height: 1104,
     alt: 'Грумер стрижёт белую кудрявую собаку на столе',
@@ -41,7 +42,7 @@ export const photos = {
     sourceUrl: 'https://static.tildacdn.com/tild3330-3962-4662-a433-373130633930/36dba52c69ceac49a5a5.webp',
   },
   groomingTerrier: {
-    src: '/images/grooming-terrier.webp',
+    src: withBase('/images/grooming-terrier.webp'),
     width: 768,
     height: 1408,
     alt: 'Мастер расчёсывает шерсть небольшой собаки',

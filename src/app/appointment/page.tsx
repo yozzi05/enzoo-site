@@ -4,7 +4,6 @@ import { Icon } from '@/components/Icon'
 import { PageIntro } from '@/components/ui/PageIntro'
 import { AppointmentForm } from '@/components/appointment/AppointmentForm'
 import { isAppointmentEnabled } from '@/lib/server/delivery'
-import { appointmentServiceOptions } from '@/content/services'
 
 export const metadata: Metadata = {
   title: 'Заявка на приём',
@@ -12,11 +11,9 @@ export const metadata: Metadata = {
   alternates: { canonical: '/appointment' },
 }
 
-export default async function AppointmentPage(props: PageProps<'/appointment'>) {
-  const sp = await props.searchParams
-  const raw = typeof sp.service === 'string' ? sp.service : ''
-  const initialService = appointmentServiceOptions.some((o) => o.value === raw) ? raw : ''
-  const enabled = isAppointmentEnabled()
+/** Страница статическая: канал доставки определяется при сборке, в статической сборке (GitHub Pages) приёма заявок нет. */
+export default function AppointmentPage() {
+  const enabled = process.env.STATIC_EXPORT !== '1' && isAppointmentEnabled()
 
   return (
     <>
@@ -29,7 +26,7 @@ export default async function AppointmentPage(props: PageProps<'/appointment'>) 
         <div className="container appt-layout">
           <div className="form-card">
             {enabled ? (
-              <AppointmentForm initialService={initialService} />
+              <AppointmentForm />
             ) : (
               <div className="status status--success" style={{ background: 'var(--surface-2)', borderLeftColor: 'var(--navy)' }}>
                 <Icon name="phone" size={24} />

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { site, siteUrl, isIndexable } from '@/config/site'
+import { site, siteUrl, isIndexable, withBase } from '@/config/site'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { MobileActionBar } from '@/components/layout/MobileActionBar'
@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ru_RU',
     siteName: site.legalTitle,
-    images: [{ url: '/brand/og-default.png', width: 1200, height: 630, alt: 'Логотип ветеринарной клиники EnZoo' }],
+    images: [{ url: `${siteUrl}/brand/og-default.png`, width: 1200, height: 630, alt: 'Логотип ветеринарной клиники EnZoo' }],
   },
   robots: isIndexable ? { index: true, follow: true } : { index: false, follow: false },
   icons: {
-    icon: [{ url: '/brand/favicon-32.png', sizes: '32x32', type: 'image/png' }, { url: '/brand/icon-512.png', sizes: '512x512', type: 'image/png' }],
-    apple: '/brand/apple-icon.png',
+    icon: [{ url: withBase('/brand/favicon-32.png'), sizes: '32x32', type: 'image/png' }, { url: withBase('/brand/icon-512.png'), sizes: '512x512', type: 'image/png' }],
+    apple: withBase('/brand/apple-icon.png'),
   },
   formatDetection: { telephone: false },
 }
@@ -42,9 +42,6 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ru">
-      <head>
-        <link rel="preload" href="/fonts/manrope-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-      </head>
       <body>
         <a href="#main" className="skip-link">
           Перейти к содержанию

@@ -26,7 +26,7 @@ export function MobileActionBar() {
     }
   }, [])
 
-  if (pathname === '/appointment') return null
+  if (pathname?.replace(/\/$/, '') === '/appointment') return null
 
   return (
     <div className="action-bar" data-hidden={typing || undefined}>

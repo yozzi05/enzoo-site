@@ -42,6 +42,18 @@ npm run lint
 npm run test:phone
 ```
 
+## Публикация на GitHub Pages
+
+Сайт для просмотра: https://yozzi05.github.io/enzoo-site/ (закрыт от индексации).
+
+При каждом push в `main` workflow `.github/workflows/pages.yml` собирает статическую версию (`STATIC_EXPORT=1`, подкаталог `/<имя репозитория>`) и публикует папку `out/`. В статической версии нет серверной части: приёма заявок через форму, редиректов и HTTP-заголовков — запись идёт по телефону. Для онлайн-заявок нужен хостинг с Node.js (`npm run build && npm start`).
+
+Локально собрать статическую версию (PowerShell):
+
+```powershell
+$env:STATIC_EXPORT='1'; $env:NEXT_PUBLIC_BASE_PATH='/enzoo-site'; npm run build
+```
+
 ## Структура
 
 ```

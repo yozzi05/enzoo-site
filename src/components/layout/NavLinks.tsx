@@ -5,7 +5,8 @@ import { usePathname } from 'next/navigation'
 import type { NavItem } from '@/config/nav'
 
 export function isActive(pathname: string, href: string) {
-  return pathname === href || pathname.startsWith(href + '/')
+  const p = pathname.replace(/\/$/, '') || '/'
+  return p === href || p.startsWith(href + '/')
 }
 
 export function NavLinks({ items, className, label }: { items: NavItem[]; className?: string; label: string }) {

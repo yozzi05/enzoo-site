@@ -79,3 +79,11 @@ export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:30
 
 /** Индексация разрешена только при NEXT_PUBLIC_SITE_ENV=production. */
 export const isIndexable = process.env.NEXT_PUBLIC_SITE_ENV === 'production'
+
+/** Подкаталог сайта (например /enzoo-site для GitHub Pages). */
+export const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
+/** Путь к файлу из public/ с учётом подкаталога. */
+export function withBase(path: string) {
+  return basePath + path
+}

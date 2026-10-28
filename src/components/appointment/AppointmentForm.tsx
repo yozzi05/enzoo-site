@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useRef, useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { site } from '@/config/site'
 import { Icon } from '@/components/Icon'
 import { track } from '@/lib/analytics'
@@ -24,12 +24,12 @@ function errorMessage(code: string | undefined): string {
   }
 }
 
-export function AppointmentForm({ initialService }: { initialService: string }) {
+export function AppointmentForm() {
   const [values, setValues] = useState<AppointmentInput>({
     name: '',
     phone: '',
     species: '',
-    service: initialService,
+    service: '',
     comment: '',
     date: '',
     consent: false,
@@ -45,6 +45,15 @@ export function AppointmentForm({ initialService }: { initialService: string }) 
   const errorRef = useRef<HTMLDivElement>(null)
   const successRef = useRef<HTMLDivElement>(null)
   const [bounds] = useState(() => dateBounds())
+
+  // Услуга из ссылки вида /appointment?service=ultrasound — предзаполняется и остаётся редактируемой.
+  useEffect(() => {
+    const raw = new URLSearchParams(window.location.search).get('service') ?? ''
+    if (appointmentServiceOptions.some((o) => o.value === raw)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- однократное чтение услуги из адреса после гидратации
+      setValues((v) => ({ ...v, service: raw }))
+    }
+  }, [])
 
   const set = <K extends keyof AppointmentInput>(key: K, value: AppointmentInput[K]) => {
     setValues((v) => ({ ...v, [key]: value }))

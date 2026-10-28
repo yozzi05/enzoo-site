@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { site } from '@/config/site'
+import { site, withBase } from '@/config/site'
 import { legalNav, mainNav, secondaryNav } from '@/config/nav'
 import { primaryServices, serviceHref } from '@/content/services'
 
@@ -11,7 +11,7 @@ export function Footer() {
       <div className="container footer__grid">
         <div className="footer__brand">
           <div className="footer__logo">
-            <Image src="/brand/enzoo-logo-vertical.png" alt="EnZoo, ветеринарная клиника" width={600} height={595} />
+            <Image src={withBase('/brand/enzoo-logo-vertical.png')} alt="EnZoo, ветеринарная клиника" width={600} height={595} />
           </div>
           <p>Ветеринарная клиника в Махачкале. Работаем {site.hours.label.toLowerCase()}.</p>
         </div>
