@@ -1,5 +1,5 @@
 import { RequestButton } from '@/components/appointment/AppointmentModal'
-import { finalPriceNote, formatPrice, needsFinalPriceNote, priceConditions, type PriceItem } from '@/content/prices'
+import { formatPrice, priceConditions, type PriceItem } from '@/content/prices'
 
 /** Строка прайса: название, условия, цена и «Оставить заявку». Условия видны без наведения. */
 export function PriceRow({ item, showCategory }: { item: PriceItem; showCategory?: string }) {
@@ -16,7 +16,6 @@ export function PriceRow({ item, showCategory }: { item: PriceItem; showCategory
             ))}
           </div>
         )}
-        {needsFinalPriceNote(item) && <div className="price-row__terms">{finalPriceNote}</div>}
       </div>
       <div className="price-row__side">
         <div className="price-row__price">

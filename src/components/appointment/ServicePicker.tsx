@@ -2,7 +2,6 @@
 
 import { useId, useMemo, useRef, useState } from 'react'
 import { Icon } from '@/components/Icon'
-import { finalPriceNote } from '@/content/prices'
 import { serviceOptions, type ServiceOption } from '@/content/service-options'
 
 function norm(s: string) {
@@ -34,8 +33,6 @@ export function ServiceSummary({ option, headingId }: { option: ServiceOption; h
           ))}
         </ul>
       )}
-      {option.finalPriceNote && <p className="svc-summary__note">{finalPriceNote}</p>}
-      {option.kind === 'item' && !option.finalPriceNote && <p className="svc-summary__note">Цена указана за эту процедуру и не включает другие услуги, если они понадобятся.</p>}
     </div>
   )
 }
