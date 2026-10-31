@@ -90,20 +90,6 @@ export default async function ServicePage(props: PageProps<'/services/[slug]'>) 
               </ol>
             </div>
 
-            {s.limits.length > 0 && (
-              <div className="content-block">
-                <h2>Важно знать</h2>
-                <ul className="limits">
-                  {s.limits.map((l) => (
-                    <li key={l}>
-                      <Icon name="info" />
-                      <span>{l}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
             {prices.length > 0 ? (
               <div className="content-block" id="prices">
                 <h2>Цены</h2>
@@ -120,6 +106,20 @@ export default async function ServicePage(props: PageProps<'/services/[slug]'>) 
             ) : (
               <div className="content-block">
                 <PriceNotice titleId="service-price" service={s.slug} />
+              </div>
+            )}
+
+            {s.limits.length > 0 && (
+              <div className="content-block">
+                <h2>Важно знать</h2>
+                <ul className="limits">
+                  {s.limits.map((l) => (
+                    <li key={l}>
+                      <Icon name="info" />
+                      <span>{l}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
 

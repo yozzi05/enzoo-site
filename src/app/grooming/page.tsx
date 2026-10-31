@@ -65,6 +65,16 @@ export default function GroomingPage() {
         </div>
       </section>
 
+      <section className="section section--tight" aria-labelledby="grooming-price" id="prices">
+        <div className="container">
+          <h2 id="grooming-price">Цены на груминг</h2>
+          <p className="muted" style={{ margin: '8px 0 16px', maxWidth: '70ch' }}>
+            Категорию стрижки, купания и экспресс-линьки определяет мастер по размеру питомца и состоянию шерсти. Седация - только по решению ветеринарного врача.
+          </p>
+          <PriceList items={pricesFor('grooming')} />
+        </div>
+      </section>
+
       <section className="section section--tight">
         <div className="container">
           <ul className="limits">
@@ -79,16 +89,6 @@ export default function GroomingPage() {
               <span>Время процедуры зависит от размера питомца, состояния шерсти и выбранного ухода - обычно 1,5-2 часа для стрижки.</span>
             </li>
           </ul>
-        </div>
-      </section>
-
-      <section className="section section--tight" aria-labelledby="grooming-price" id="prices">
-        <div className="container">
-          <h2 id="grooming-price">Цены на груминг</h2>
-          <p className="muted" style={{ margin: '8px 0 16px', maxWidth: '70ch' }}>
-            Категорию стрижки, купания и экспресс-линьки определяет мастер по размеру питомца и состоянию шерсти. Седация - только по решению ветеринарного врача.
-          </p>
-          <PriceList items={pricesFor('grooming')} />
         </div>
       </section>
 
