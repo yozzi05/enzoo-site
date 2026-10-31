@@ -3,7 +3,7 @@
 import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { track, type AnalyticsEvent } from '@/lib/analytics'
-import { CONSENT_EVENT, getCookieChoice } from '@/lib/consent'
+import { onConsent } from '@/lib/consent'
 
 const ymId = process.env.NEXT_PUBLIC_YM_ID
 
@@ -12,15 +12,9 @@ const ymId = process.env.NEXT_PUBLIC_YM_ID
  * Ссылки остаются серверными; здесь только отправка события без персональных данных.
  */
 export function AnalyticsListener() {
-  // Метрика (cookie) загружается только после согласия посетителя.
+  // Метрика (cookie) загружается только после согласия посетителя на аналитику.
   const [allowed, setAllowed] = useState(false)
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- выбор хранится в браузере и известен только после гидратации
-    setAllowed(getCookieChoice() === 'accepted')
-    const onChoice = (e: Event) => setAllowed((e as CustomEvent).detail === 'accepted')
-    window.addEventListener(CONSENT_EVENT, onChoice)
-    return () => window.removeEventListener(CONSENT_EVENT, onChoice)
-  }, [])
+  useEffect(() => onConsent((c) => setAllowed(Boolean(c?.analytics))), [])
 
   useEffect(() => {
     const onClick = (e: MouseEvent) => {

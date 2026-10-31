@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { site, withBase } from '@/config/site'
+import { CookieSettingsLink } from './CookieSettingsLink'
 import { legalNav, mainNav, secondaryNav } from '@/config/nav'
 import { primaryServices, serviceHref } from '@/content/services'
 
@@ -65,6 +66,9 @@ export function Footer() {
               <Link href={i.href}>{i.label}</Link>
             </li>
           ))}
+          <li>
+            <CookieSettingsLink />
+          </li>
         </ul>
       </div>
     </footer>
