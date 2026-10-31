@@ -4,7 +4,8 @@ import { Icon } from '@/components/Icon'
 import { PageIntro } from '@/components/ui/PageIntro'
 import { CallActions } from '@/components/ui/CallActions'
 import { FaqList } from '@/components/ui/FaqList'
-import { PriceNotice } from '@/components/sections/PriceNotice'
+import { PriceList } from '@/components/prices/PriceRow'
+import { pricesFor } from '@/content/prices'
 import { ServiceViewTracker } from '@/components/catalog/ServiceViewTracker'
 import { grooming, photos } from '@/content/clinic'
 
@@ -81,9 +82,13 @@ export default function GroomingPage() {
         </div>
       </section>
 
-      <section className="section section--tight">
+      <section className="section section--tight" aria-labelledby="grooming-price" id="prices">
         <div className="container">
-          <PriceNotice titleId="grooming-price" service="grooming" />
+          <h2 id="grooming-price">Цены на груминг</h2>
+          <p className="muted" style={{ margin: '8px 0 16px', maxWidth: '70ch' }}>
+            Категорию стрижки, купания и экспресс-линьки определяет мастер по размеру питомца и состоянию шерсти. Седация - только по решению ветеринарного врача.
+          </p>
+          <PriceList items={pricesFor('grooming')} />
         </div>
       </section>
 

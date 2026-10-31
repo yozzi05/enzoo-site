@@ -5,6 +5,8 @@ import { Footer } from '@/components/layout/Footer'
 import { MobileActionBar } from '@/components/layout/MobileActionBar'
 import { AnalyticsListener } from '@/components/layout/AnalyticsListener'
 import { JsonLd, organizationLd } from '@/components/ui/JsonLd'
+import { AppointmentModalProvider } from '@/components/appointment/AppointmentModal'
+import { isAppointmentEnabled } from '@/lib/server/delivery'
 import '@/styles/fonts.css'
 import '@/styles/base.css'
 import '@/styles/components.css'
@@ -40,17 +42,21 @@ export const viewport: Viewport = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // Канал доставки определяется при сборке; в статической версии (GitHub Pages) приёма заявок нет.
+  const appointmentEnabled = process.env.STATIC_EXPORT !== '1' && isAppointmentEnabled()
   return (
     <html lang="ru">
       <body>
         <a href="#main" className="skip-link">
           Перейти к содержанию
         </a>
-        <Header />
-        <main id="main" tabIndex={-1}>
-          {children}
-        </main>
-        <Footer />
+        <AppointmentModalProvider enabled={appointmentEnabled}>
+          <Header />
+          <main id="main" tabIndex={-1}>
+            {children}
+          </main>
+          <Footer />
+        </AppointmentModalProvider>
         <MobileActionBar />
         <AnalyticsListener />
         <JsonLd data={organizationLd()} />

@@ -1,12 +1,13 @@
 import { NextResponse } from 'next/server'
 import { LIMITS, validateAppointment, type AppointmentInput } from '@/lib/appointment'
 import { deliverAppointment, getDeliveryMode } from '@/lib/server/delivery'
+import { getServiceOption } from '@/content/service-options'
 import { checkRateLimit, clientKey } from '@/lib/server/rate-limit'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
-type ErrorCode = 'disabled' | 'bad_request' | 'too_large' | 'rate_limited' | 'validation' | 'delivery_failed'
+type ErrorCode = 'disabled' | 'bad_request' | 'too_large' | 'rate_limited' | 'validation' | 'price_changed' | 'delivery_failed'
 
 function fail(code: ErrorCode, status: number, extra: Record<string, unknown> = {}, headers?: HeadersInit) {
   // В лог попадает только код ошибки - без имени, телефона и комментария.
@@ -39,6 +40,12 @@ export async function POST(req: Request) {
 
   const result = validateAppointment(body)
   if (!result.ok) return fail('validation', 422, { errors: result.errors })
+
+  // Цена берётся из прайса на сервере. Если посетитель видел другую сумму - показываем актуальную и просим подтвердить.
+  const option = getServiceOption(result.data.service)
+  if (option?.signature && body.priceSignature !== option.signature) {
+    return fail('price_changed', 409, { service: option })
+  }
 
   const delivery = await deliverAppointment(result.data)
   if (!delivery.ok) return fail('delivery_failed', 502, { reason: delivery.reason })

@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { site } from '@/config/site'
 import { Icon } from '@/components/Icon'
 import { PageIntro } from '@/components/ui/PageIntro'
-import { AppointmentForm } from '@/components/appointment/AppointmentForm'
+import { AppointmentPageForm } from '@/components/appointment/AppointmentPageForm'
+import { PhoneOnlyService } from '@/components/appointment/PhoneOnlyService'
 import { isAppointmentEnabled } from '@/lib/server/delivery'
 
 export const metadata: Metadata = {
@@ -26,8 +27,10 @@ export default function AppointmentPage() {
         <div className="container appt-layout">
           <div className="form-card">
             {enabled ? (
-              <AppointmentForm />
+              <AppointmentPageForm />
             ) : (
+              <>
+              <PhoneOnlyService />
               <div className="status status--success" style={{ background: 'var(--surface-2)', borderLeftColor: 'var(--navy)' }}>
                 <Icon name="phone" size={24} />
                 <div>
@@ -40,6 +43,7 @@ export default function AppointmentPage() {
                   </p>
                 </div>
               </div>
+              </>
             )}
           </div>
           <aside className="service-aside" aria-label="Связаться по телефону">

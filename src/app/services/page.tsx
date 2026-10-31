@@ -3,7 +3,7 @@ import { PageIntro } from '@/components/ui/PageIntro'
 import { ServiceCatalog, type CatalogEntry } from '@/components/catalog/ServiceCatalog'
 import { PriceNotice } from '@/components/sections/PriceNotice'
 import { catalogLinks, serviceGroups, serviceHref, services } from '@/content/services'
-import { grooming } from '@/content/clinic'
+import { pricesFor } from '@/content/prices'
 
 export const metadata: Metadata = {
   title: 'Услуги и направления',
@@ -18,7 +18,7 @@ export default function ServicesPage() {
       summary: s.summary,
       href: serviceHref(s),
       group: s.group,
-      procedures: s.slug === 'grooming' ? grooming.services.map((g) => g.title) : s.procedures.flatMap((b) => b.items),
+      procedures: [...new Set([...pricesFor(s.slug).map((p) => (p.complexity ? `${p.name} (${p.complexity})` : p.name)), ...s.procedures.flatMap((b) => b.items)])],
       keywords: s.keywords,
     })),
     ...catalogLinks.map((c) => ({ ...c, procedures: [] })),

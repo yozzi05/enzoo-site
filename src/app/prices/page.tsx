@@ -5,92 +5,71 @@ import { Icon } from '@/components/Icon'
 import { PageIntro } from '@/components/ui/PageIntro'
 import { FaqList } from '@/components/ui/FaqList'
 import { PriceExplorer } from '@/components/prices/PriceExplorer'
-import { getPrices } from '@/content/prices'
+import { RequestButton } from '@/components/appointment/AppointmentModal'
+import { priceItems, pricesApprovedAt } from '@/content/prices'
 import { serviceHref, services } from '@/content/services'
 
 export const metadata: Metadata = {
-  title: 'Стоимость услуг',
-  description: 'Как узнать стоимость услуг ветеринарной клиники EnZoo в Махачкале: от чего зависит цена, как уточнить её по телефону или через заявку.',
+  title: 'Цены на услуги',
+  description: 'Прайс ветеринарной клиники EnZoo в Махачкале: приём, анализы, стационар, хирургия, рентген, УЗИ, вакцинация, груминг. Заявка на любую услугу.',
   alternates: { canonical: '/prices' },
 }
 
-const factors = [
-  { title: 'Вид и вес питомца', text: 'Для многих процедур цена различается для кошек, собак разных весовых категорий и мелких животных.' },
-  { title: 'Сложность случая', text: 'Операции и процедуры делятся на категории сложности - её определяет врач после осмотра.' },
-  { title: 'Медикаменты и материалы', text: 'Часть позиций указывается без стоимости препаратов, вакцин, расходных материалов.' },
-  { title: 'Сопутствующие услуги', text: 'Анестезия, обследование, стационар оплачиваются отдельно, если они нужны.' },
+const faq = [
+  {
+    q: 'Это окончательная стоимость лечения?',
+    a: 'Нет. В прайсе указана цена отдельной процедуры. Если понадобятся другие процедуры, анализы, медикаменты или стационар, итоговая сумма будет выше - её назовут в клинике.',
+  },
+  { q: 'Входит ли стоимость вакцины в вакцинацию?', a: 'Нет, вакцина оплачивается отдельно от осмотра.' },
+  { q: 'Как узнать цену услуги, которой нет в списке?', a: 'Позвоните администратору или оставьте заявку с нужным направлением - стоимость уточнят в клинике.' },
 ]
 
-const faq = [
-  { q: 'Почему на сайте нет точных цен?', a: 'Стоимость зависит от вида, веса питомца и сложности случая, поэтому её удобнее уточнить у администратора. Как только клиника утвердит актуальный прайс, он появится на этой странице.' },
-  { q: 'Можно ли узнать цену операции заранее?', a: 'Администратор подскажет ориентир по телефону. Итоговую сумму врач называет после осмотра и, при необходимости, обследования.' },
-  { q: 'Входит ли стоимость вакцины в вакцинацию?', a: 'Нет, вакцина оплачивается отдельно от осмотра и введения.' },
-]
+const date = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })
 
 export default function PricesPage() {
-  const { items, isFixture } = getPrices()
   const categories = services.map((s) => ({ slug: s.slug, name: s.name }))
+  const unpriced = services.filter((s) => !priceItems.some((i) => i.category === s.slug))
   return (
     <>
       <PageIntro
         crumbs={[{ href: '/prices', label: 'Цены' }]}
-        title="Стоимость услуг"
-        lead="Цена зависит от питомца и объёма помощи. Уточните её по телефону или оставьте заявку с выбранной услугой - администратор перезвонит."
+        title="Цены на услуги"
+        lead="Цены указаны за отдельные процедуры. Нажмите «Оставить заявку» у нужной услуги - она подставится в форму вместе с ценой и условиями."
       >
         <div className="actions">
           <a href={site.phone.href} className="btn btn--primary" data-track="call_click" data-place="prices-intro">
-            <Icon name="phone" size={18} /> Уточнить стоимость
+            <Icon name="phone" size={18} /> Позвонить
           </a>
           <Link href="/appointment" className="btn btn--ghost-light">
-            Оставить заявку
+            Общая заявка
           </Link>
         </div>
       </PageIntro>
 
-      {items.length > 0 && (
-        <section className="section section--tight" aria-labelledby="pricelist-title">
-          <div className="container">
-            {isFixture && <p className="fixture-banner">Демонстрационные данные для проверки интерфейса. Это не цены клиники.</p>}
-            <h2 id="pricelist-title" className="visually-hidden">
-              Прайс
-            </h2>
-            <PriceExplorer items={items} categories={categories} />
-          </div>
-        </section>
-      )}
-
-      <section className="section section--tight" aria-labelledby="factors-title">
+      <section className="section section--tight" aria-labelledby="pricelist-title">
         <div className="container">
-          <h2 id="factors-title" style={{ marginBottom: 24 }}>
-            От чего зависит стоимость
+          <h2 id="pricelist-title" className="visually-hidden">
+            Прайс
           </h2>
-          <ul className="factors">
-            {factors.map((f) => (
-              <li key={f.title}>
-                <h3>{f.title}</h3>
-                <p>{f.text}</p>
-              </li>
-            ))}
-          </ul>
+          <PriceExplorer items={priceItems} categories={categories} />
+          <p className="photo-note">Прайс утверждён клиникой {date.format(new Date(pricesApprovedAt))} Итоговая стоимость зависит от объёма помощи и уточняется в клинике.</p>
         </div>
       </section>
 
-      {items.length === 0 && (
+      {unpriced.length > 0 && (
         <section className="section section--tight" aria-labelledby="ask-title">
           <div className="container">
-            <h2 id="ask-title">Уточнить стоимость по направлению</h2>
+            <h2 id="ask-title">Стоимость по запросу</h2>
             <p className="lead" style={{ margin: '12px 0 24px' }}>
-              Выберите направление - заявка откроется с уже указанной услугой. Или просто позвоните: {site.phone.display}.
+              По этим направлениям цены не опубликованы - их назовёт администратор. Оставьте заявку или позвоните: {site.phone.display}.
             </p>
             <ul className="price-dirs">
-              {services.map((s) => (
+              {unpriced.map((s) => (
                 <li key={s.slug}>
                   <span className="price-dirs__name">
                     <Link href={serviceHref(s)}>{s.name}</Link>
                   </span>
-                  <Link href={`/appointment?service=${s.slug}`} className="price-dirs__link">
-                    Уточнить стоимость <Icon name="arrow" size={16} />
-                  </Link>
+                  <RequestButton serviceId={s.slug} srLabel={s.name} />
                 </li>
               ))}
             </ul>

@@ -2,7 +2,7 @@
  * Общая клиентская и серверная валидация заявки на приём.
  * Заявка - запрос на согласование визита, а не подтверждённая бронь.
  */
-import { appointmentServiceOptions } from '@/content/services'
+import { getServiceOption } from '@/content/service-options'
 import { toE164 } from './phone'
 
 export { formatPhone, phoneDigits, toE164 } from './phone'
@@ -31,6 +31,10 @@ export type AppointmentInput = {
   comment: string
   date: string
   consent: boolean
+  /** Страница, с которой отправлена заявка */
+  sourcePage: string
+  /** Подпись цены, которую видел посетитель (см. priceSignature) */
+  priceSignature: string
   /** honeypot */
   website: string
 }
@@ -42,6 +46,7 @@ export type AppointmentData = {
   service: string | null
   comment: string | null
   date: string | null
+  sourcePage: string | null
 }
 
 export type FieldErrors = Partial<Record<'name' | 'phone' | 'species' | 'service' | 'comment' | 'date' | 'consent', string>>
@@ -58,7 +63,6 @@ export function dateBounds(now = new Date()) {
   return { min, max: todayIso(maxD) }
 }
 
-const serviceValues = new Set(appointmentServiceOptions.map((o) => o.value))
 const speciesValues = new Set<string>(speciesOptions.map((o) => o.value))
 
 // Управляющие символы, кроме перевода строки
@@ -77,6 +81,7 @@ export function validateAppointment(input: Partial<AppointmentInput>, now = new 
   const service = clean(input.service, LIMITS.service)
   const comment = clean(input.comment, LIMITS.comment + 1)
   const date = clean(input.date, 10)
+  const sourcePage = clean(input.sourcePage, 200)
 
   if (name.length < 2) errors.name = 'Укажите, как к вам обращаться'
   else if (name.length > LIMITS.name) errors.name = `Не больше ${LIMITS.name} символов`
@@ -85,7 +90,7 @@ export function validateAppointment(input: Partial<AppointmentInput>, now = new 
   if (!phone) errors.phone = 'Введите номер полностью: +7 и 10 цифр'
 
   if (species && !speciesValues.has(species)) errors.species = 'Выберите вариант из списка'
-  if (service && !serviceValues.has(service)) errors.service = 'Выберите услугу из списка'
+  if (service && !getServiceOption(service)) errors.service = 'Выберите услугу из списка'
   if (comment.length > LIMITS.comment) errors.comment = `Не больше ${LIMITS.comment} символов`
 
   if (date) {
@@ -100,13 +105,13 @@ export function validateAppointment(input: Partial<AppointmentInput>, now = new 
   if (Object.keys(errors).length) return { ok: false, errors }
   return {
     ok: true,
-    data: { name, phone: phone!, species: species || null, service: service || null, comment: comment || null, date: date || null },
+    data: { name, phone: phone!, species: species || null, service: service || null, comment: comment || null, date: date || null, sourcePage: sourcePage.startsWith('/') ? sourcePage : null },
   }
 }
 
 export function serviceLabel(value: string | null): string | null {
   if (!value) return null
-  return appointmentServiceOptions.find((o) => o.value === value)?.label ?? null
+  return getServiceOption(value)?.label ?? null
 }
 
 export function speciesLabel(value: string | null): string | null {

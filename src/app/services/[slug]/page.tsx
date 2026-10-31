@@ -9,6 +9,9 @@ import { CallActions } from '@/components/ui/CallActions'
 import { PriceNotice } from '@/components/sections/PriceNotice'
 import { ServiceViewTracker } from '@/components/catalog/ServiceViewTracker'
 import { getService, serviceHref, services } from '@/content/services'
+import { pricesFor } from '@/content/prices'
+import { PriceList } from '@/components/prices/PriceRow'
+import { RequestButton } from '@/components/appointment/AppointmentModal'
 
 export const dynamicParams = false
 
@@ -33,6 +36,7 @@ export default async function ServicePage(props: PageProps<'/services/[slug]'>) 
   const s = getService(slug)
   if (!s || s.href) notFound()
 
+  const prices = pricesFor(s.slug)
   const related = s.related.map(getService).filter((r) => r !== undefined)
 
   return (
@@ -100,9 +104,24 @@ export default async function ServicePage(props: PageProps<'/services/[slug]'>) 
               </div>
             )}
 
-            <div className="content-block">
-              <PriceNotice titleId="service-price" service={s.slug} />
-            </div>
+            {prices.length > 0 ? (
+              <div className="content-block" id="prices">
+                <h2>Цены</h2>
+                <p className="muted" style={{ marginBottom: 12 }}>
+                  Цена указана за отдельную процедуру. Итоговая стоимость зависит от объёма помощи и уточняется в клинике.
+                </p>
+                <PriceList items={prices} />
+                <p style={{ marginTop: 16 }}>
+                  <Link href={`/prices?cat=${s.slug}`} className="link-arrow">
+                    Все цены клиники <Icon name="arrow" size={18} />
+                  </Link>
+                </p>
+              </div>
+            ) : (
+              <div className="content-block">
+                <PriceNotice titleId="service-price" service={s.slug} />
+              </div>
+            )}
 
             {s.faq.length > 0 && (
               <div className="content-block">
@@ -129,11 +148,9 @@ export default async function ServicePage(props: PageProps<'/services/[slug]'>) 
 
           <aside className="service-aside" aria-label="Запись">
             <div className="aside-card aside-card--navy">
-              <h2>Записаться: {s.name.toLowerCase()}</h2>
+              <h2>Записаться: {s.name}</h2>
               <p>Заявка - не бронь: администратор перезвонит и подтвердит время приёма.</p>
-              <Link href={`/appointment?service=${s.slug}`} className="btn btn--primary">
-                Оставить заявку
-              </Link>
+              <RequestButton serviceId={s.slug} className="btn btn--primary" />
               <a href={site.phone.href} className="aside-card__phone" data-track="call_click" data-place="service-aside" data-service={s.slug}>
                 {site.phone.display}
               </a>

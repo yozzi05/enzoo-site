@@ -2,7 +2,8 @@ import 'server-only'
 import { appendFile, mkdir } from 'node:fs/promises'
 import path from 'node:path'
 import { randomUUID } from 'node:crypto'
-import { serviceLabel, speciesLabel, type AppointmentData } from '@/lib/appointment'
+import { speciesLabel, type AppointmentData } from '@/lib/appointment'
+import { getServiceOption } from '@/content/service-options'
 
 /**
  * Адаптеры доставки заявок. Канал выбирается переменной APPOINTMENT_DELIVERY.
@@ -30,15 +31,36 @@ export function isAppointmentEnabled(): boolean {
   return getDeliveryMode() !== 'disabled'
 }
 
+/** Сведения об услуге - только из доверенного прайса на сервере, не из браузера. */
+function serviceDetails(value: string | null) {
+  const o = getServiceOption(value)
+  if (!o) return null
+  return {
+    id: o.value,
+    kind: o.kind,
+    name: o.label,
+    category: o.category,
+    categoryName: o.categoryName,
+    price: o.priceText,
+    priceKind: o.priceKind,
+    unit: o.unit,
+    conditions: o.conditions,
+  }
+}
+
 function formatMessage(id: string, d: AppointmentData): string {
+  const s = serviceDetails(d.service)
   const rows = [
     `Заявка с сайта EnZoo № ${id.slice(0, 8)}`,
     `Имя: ${d.name}`,
     `Телефон: ${d.phone}`,
     d.species && `Питомец: ${speciesLabel(d.species)}`,
-    d.service && `Услуга: ${serviceLabel(d.service)}`,
+    s && `Услуга: ${s.name} (${s.categoryName}, ID ${s.id})`,
+    s?.price && `Стоимость по прайсу: ${s.price}${s.unit ? `, ${s.unit}` : ''}`,
+    s?.conditions.length ? `Условия: ${s.conditions.join('; ')}` : null,
     d.date && `Желательная дата: ${d.date.split('-').reverse().join('.')}`,
     d.comment && `Комментарий: ${d.comment}`,
+    d.sourcePage && `Страница: ${d.sourcePage}`,
     '',
     'Это заявка на согласование: время нужно подтвердить звонком.',
   ]
@@ -73,7 +95,7 @@ export async function deliverAppointment(d: AppointmentData): Promise<DeliveryRe
         const secret = process.env.APPOINTMENT_WEBHOOK_SECRET
         const res = await postJson(
           process.env.APPOINTMENT_WEBHOOK_URL!,
-          { id, createdAt: new Date().toISOString(), source: 'enzoo-site', ...d, text: formatMessage(id, d) },
+          { id, createdAt: new Date().toISOString(), source: 'enzoo-site', ...d, service: serviceDetails(d.service), text: formatMessage(id, d) },
           secret ? { authorization: `Bearer ${secret}` } : {},
         )
         return res.ok ? { ok: true, id } : { ok: false, reason: 'upstream_error' }
@@ -82,7 +104,7 @@ export async function deliverAppointment(d: AppointmentData): Promise<DeliveryRe
         if (process.env.TEST_DELIVERY_FAIL === '1') return { ok: false, reason: 'upstream_error' }
         const dir = path.join(process.cwd(), '.data')
         await mkdir(dir, { recursive: true })
-        await appendFile(path.join(dir, 'test-outbox.jsonl'), JSON.stringify({ id, createdAt: new Date().toISOString(), ...d }) + '\n', 'utf8')
+        await appendFile(path.join(dir, 'test-outbox.jsonl'), JSON.stringify({ id, createdAt: new Date().toISOString(), ...d, service: serviceDetails(d.service) }) + '\n', 'utf8')
         return { ok: true, id }
       }
       default:
