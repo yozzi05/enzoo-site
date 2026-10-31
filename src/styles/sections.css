@@ -290,3 +290,21 @@ main:focus { outline: none; }
 .legal .legal-details { list-style: none; padding-left: 0; }
 .legal-blank { display: inline-block; min-width: 14em; border-bottom: 1px solid var(--text-muted); vertical-align: baseline; height: 1em; }
 @media (max-width: 479px) { .legal-blank { min-width: 9em; } }
+
+/* ——— Кнопки-фильтры ——— */
+.chips { position: relative; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 999px;
+  border: 1.5px solid var(--line-strong); background: #fff; color: var(--navy); font-weight: 700; font-size: 0.9375rem;
+  transition: background-color 0.15s var(--ease), border-color 0.15s var(--ease), color 0.15s var(--ease);
+}
+.chip:hover { border-color: var(--navy); }
+.chip[aria-pressed='true'] { background: var(--navy); border-color: var(--navy); color: #fff; }
+.chip[aria-pressed='true'] .chip__count { background: rgba(255, 255, 255, 0.18); color: #fff; }
+.chip:disabled { opacity: 0.45; cursor: not-allowed; }
+.chip__count { min-width: 24px; padding: 1px 7px; border-radius: 999px; background: var(--surface-2); font-size: 0.8125rem; text-align: center; color: var(--text-muted); }
+@media (max-width: 639px) {
+  .chips { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(var(--gutter) * -1); padding: 2px var(--gutter) 6px; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex-shrink: 0; }
+}
