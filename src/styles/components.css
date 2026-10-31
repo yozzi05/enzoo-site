@@ -192,3 +192,22 @@ body:has(.action-bar) { padding-bottom: calc(var(--action-bar-h) + env(safe-area
 /* Таблица-список вида «термин - значение» */
 .rows { list-style: none; border-top: 1px solid var(--line); }
 .rows > li { border-bottom: 1px solid var(--line); }
+
+/* ——— Уведомление о cookie ——— */
+.cookie-notice {
+  position: fixed; z-index: 35; left: var(--gutter); right: var(--gutter);
+  bottom: calc(var(--action-bar-h) + 12px + env(safe-area-inset-bottom));
+  display: grid; gap: 12px; max-width: 560px; padding: 16px 18px;
+  background: #fff; color: var(--text); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 28px rgba(0, 31, 56, 0.16);
+  font-size: 0.9375rem; line-height: 1.5;
+}
+.cookie-notice a { color: var(--navy); font-weight: 600; }
+.cookie-notice__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+body:not(:has(.action-bar)) .cookie-notice { bottom: calc(12px + env(safe-area-inset-bottom)); }
+@media (min-width: 768px) {
+  .cookie-notice { left: auto; right: 24px; bottom: 24px; grid-template-columns: 1fr auto; align-items: center; max-width: 640px; }
+}
+html.modal-open .cookie-notice, html.menu-open .cookie-notice { display: none; }
+@media (max-width: 767px) {
+  .cookie-notice { grid-template-columns: 1fr auto; align-items: center; gap: 12px; padding: 12px 14px; font-size: 0.8125rem; line-height: 1.45; }
+}

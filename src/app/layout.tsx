@@ -4,6 +4,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { MobileActionBar } from '@/components/layout/MobileActionBar'
 import { AnalyticsListener } from '@/components/layout/AnalyticsListener'
+import { CookieNotice } from '@/components/layout/CookieNotice'
 import { JsonLd, organizationLd } from '@/components/ui/JsonLd'
 import { AppointmentModalProvider } from '@/components/appointment/AppointmentModal'
 import { isAppointmentEnabled } from '@/lib/server/delivery'
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </AppointmentModalProvider>
         <MobileActionBar />
+        <CookieNotice />
         <AnalyticsListener />
         <JsonLd data={organizationLd()} />
       </body>
