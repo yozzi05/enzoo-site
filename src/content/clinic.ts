@@ -17,6 +17,14 @@ export type Photo = {
 }
 
 export const photos = {
+  heroCat: {
+    src: withBase('/images/hero-cat.webp'),
+    width: 1122,
+    height: 1402,
+    alt: 'Рыжий пушистый кот лежит на синем фоне и смотрит вверх',
+    kind: 'illustrative',
+    sourceUrl: 'Предоставлено владельцем сайта (02.11.2026)',
+  },
   catOnCounter: {
     src: withBase('/images/cat-on-counter.webp'),
     width: 960,

@@ -74,7 +74,7 @@ export default function HomePage() {
             </p>
           </div>
           <figure className="hero__media">
-            <Image src={photos.catOnCounter.src} alt={photos.catOnCounter.alt} width={photos.catOnCounter.width} height={photos.catOnCounter.height} priority sizes="(min-width: 1024px) 460px, 100vw" />
+            <Image src={photos.heroCat.src} alt={photos.heroCat.alt} width={photos.heroCat.width} height={photos.heroCat.height} priority sizes="(min-width: 1024px) 460px, 100vw" />
             <figcaption>
               <Icon name="clock" size={18} /> {site.hours.label}, без выходных
             </figcaption>
