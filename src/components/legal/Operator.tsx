@@ -25,17 +25,28 @@ export function Operator() {
         ИНН: <Value value={l.inn} />
       </li>
       <li>
-        ОГРН / ОГРНИП: <Value value={l.ogrn} />
+        КПП: <Value value={l.kpp} />
       </li>
       <li>
-        Адрес: <Value value={l.legalAddress} />
+        ОГРН: <Value value={l.ogrn} />
       </li>
       <li>
-        Адрес клиники: {site.address.full}
+        Юридический адрес: <Value value={l.legalAddress} />
+      </li>
+      <li>
+        Фактический адрес (клиника): {l.actualAddress ?? site.address.full}
+      </li>
+      <li>
+        Генеральный директор: <Value value={l.director} />
       </li>
       <li>
         Телефон для обращений: <a href={site.phone.href}>{site.phone.display}</a>
       </li>
+      {l.email && (
+        <li>
+          Email для обращений: <a href={`mailto:${l.email}`}>{l.email}</a>
+        </li>
+      )}
     </ul>
   )
 }

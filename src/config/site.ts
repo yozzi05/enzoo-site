@@ -67,12 +67,17 @@ export const site = {
   messengers: [] as { id: string; label: string; href: string }[],
 
   /** Реквизиты оператора персональных данных. Пусто - пока не предоставлены владельцем. */
+  /** Реквизиты оператора - по карточке предприятия ООО «ЭНЗОО». */
   legal: {
-    operatorName: null as string | null,
-    inn: null as string | null,
-    ogrn: null as string | null,
-    legalAddress: null as string | null,
-    updatedAt: '2026-10-28',
+    operatorName: 'Общество с ограниченной ответственностью «ЭНЗОО» (ООО «ЭНЗОО»)' as string | null,
+    inn: '0571021990' as string | null,
+    kpp: '057101001' as string | null,
+    ogrn: '1230500002215' as string | null,
+    legalAddress: 'Республика Дагестан, г. Махачкала, проспект Гамидова, 57, этаж 1' as string | null,
+    actualAddress: 'Республика Дагестан, г. Махачкала, проспект Имама Шамиля, 35, этаж 1' as string | null,
+    director: 'Амирбекова Лиана Калимуллаевна' as string | null,
+    email: 'enzoovet@gmail.com' as string | null,
+    updatedAt: '2026-11-02',
   },
 } as const
 
