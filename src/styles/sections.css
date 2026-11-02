@@ -308,3 +308,25 @@ main:focus { outline: none; }
   .chips::-webkit-scrollbar { display: none; }
   .chip { flex-shrink: 0; }
 }
+
+/* ——— Вариант первого экрана: фото растворяется в фоне ——— */
+.hero--blend { background: radial-gradient(ellipse 45% 70% at 74% 52%, #05305a 0%, #022c52 55%, transparent 100%), linear-gradient(100deg, #002f55 0%, #002b50 100%); }
+.hero--blend .hero__media { position: relative; }
+.hero--blend .hero__media img {
+  border-radius: 0;
+  -webkit-mask-image: radial-gradient(ellipse 50% 52% at 47% 50%, #000 52%, transparent 97%);
+  mask-image: radial-gradient(ellipse 50% 52% at 47% 50%, #000 52%, transparent 97%);
+}
+.hero--blend .hero__media figcaption {
+  justify-content: center; margin-top: -8px; padding: 0; background: none; color: var(--lime); border-radius: 0; font-size: 0.875rem;
+}
+@media (min-width: 768px) {
+  .hero--blend .hero__media { margin-block: -24px; }
+}
+@media (min-width: 1024px) {
+  .hero--blend .hero__media { margin-right: calc(var(--gutter) * -1); }
+}
+@media (min-width: 1024px) {
+  /* Фото на 15% крупнее: колонка 0.85fr → 1.08fr при той же ширине контейнера */
+  .hero--blend .hero__grid { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1.08fr); }
+}

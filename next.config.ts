@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
         images: { unoptimized: true },
       }
     : {
-        images: { formats: ['image/avif', 'image/webp'] },
+        images: { formats: ['image/avif', 'image/webp'], qualities: [75, 90] },
         async redirects() {
           return legacyRedirects
         },

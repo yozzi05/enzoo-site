@@ -46,7 +46,7 @@ export default function HomePage() {
   return (
     <>
       {/* Первый экран */}
-      <section className="hero" aria-labelledby="hero-title">
+      <section className="hero hero--blend" aria-labelledby="hero-title">
         <div className="container hero__grid">
           <div className="hero__text">
             <p className="eyebrow">{site.tagline}</p>
@@ -74,7 +74,7 @@ export default function HomePage() {
             </p>
           </div>
           <figure className="hero__media">
-            <Image src={photos.heroCat.src} alt={photos.heroCat.alt} width={photos.heroCat.width} height={photos.heroCat.height} priority sizes="(min-width: 1024px) 460px, 100vw" />
+            <Image src={photos.heroCat.src} alt={photos.heroCat.alt} width={photos.heroCat.width} height={photos.heroCat.height} quality={90} priority sizes="(min-width: 1024px) 460px, 100vw" />
             <figcaption>
               <Icon name="clock" size={18} /> {site.hours.label}, без выходных
             </figcaption>
