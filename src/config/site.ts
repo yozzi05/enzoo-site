@@ -77,6 +77,11 @@ export const site = {
     actualAddress: 'Республика Дагестан, г. Махачкала, проспект Имама Шамиля, 35, этаж 1' as string | null,
     director: 'Амирбекова Лиана Калимуллаевна' as string | null,
     email: 'enzoovet@gmail.com' as string | null,
+    /** Телефон для обращений по персональным данным (звонки и запись - site.phone). */
+    phone: {
+      display: '+7 964 553-22-99',
+      href: 'tel:+79645532299',
+    },
     updatedAt: '2026-11-02',
   },
 } as const

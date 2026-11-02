@@ -55,7 +55,7 @@ export default function PrivacyPage() {
           <h2>6. Ваши права</h2>
           <p>
             Вы можете узнать, какие ваши данные обрабатываются, попросить уточнить или удалить их, а также отозвать согласие на обработку. Для этого позвоните по телефону{' '}
-            <a href={site.phone.href}>{site.phone.display}</a>
+            <a href={site.legal.phone.href}>{site.legal.phone.display}</a>
             {site.legal.email && (
               <>
                 {' '}или напишите на <a href={`mailto:${site.legal.email}`}>{site.legal.email}</a>

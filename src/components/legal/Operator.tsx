@@ -40,7 +40,7 @@ export function Operator() {
         Генеральный директор: <Value value={l.director} />
       </li>
       <li>
-        Телефон для обращений: <a href={site.phone.href}>{site.phone.display}</a>
+        Телефон для обращений: <a href={l.phone.href}>{l.phone.display}</a>
       </li>
       {l.email && (
         <li>
