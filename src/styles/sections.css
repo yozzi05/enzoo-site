@@ -275,7 +275,7 @@ main:focus { outline: none; }
 .breeds li { padding: 6px 12px; background: var(--surface-2); border-radius: 999px; font-size: 0.875rem; font-weight: 600; }
 
 /* --- Документы --- */
-.legal { max-width: 76ch; }
+.legal > * { max-width: 76ch; }
 .legal h2 { font-size: 1.375rem; margin: 40px 0 12px; }
 .legal p, .legal li { color: var(--text); }
 .legal ul { padding-left: 1.2em; display: grid; gap: 6px; margin-top: 8px; }
